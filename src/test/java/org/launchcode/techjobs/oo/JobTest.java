@@ -35,7 +35,31 @@ public class JobTest {
     }
     @Test()
     public void testToStringStartsAndEndsWithNewLine(){
-//job .to String
-        //output does...
+        Job testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertTrue(testJob1.toString().startsWith("System.lineSeparator()")); //How do I use assertEquals?
+        assertTrue(testJob1.toString().endsWith("System.lineSeparator()"));
+    }
+    @Test()
+    public void testToStringContainsCorrectLabelsAndData(){ //I'm assuming the index? I'm not sure why this is working
+        Job testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals(System.lineSeparator()+"ID: "+testJob1.getId()+System.lineSeparator()+
+                "Name: Product tester" + System.lineSeparator()+
+                "Employer: ACME" + System.lineSeparator()+
+                "Location: Desert" + System.lineSeparator()+
+                "Position Type: Quality control" + System.lineSeparator()+
+                "Core Competency: Persistence"+System.lineSeparator(), testJob1.toString().substring(1, (testJob1.toString().length() - 1)));
+    }
+    @Test()
+    public void testToStringHandlesEmptyField(){
+        Job testJob3 = new Job("Product tester", new Employer(), new Location("Desert"),
+                new PositionType(), new CoreCompetency("Persistence"));
+        assertEquals(System.lineSeparator()+"ID: "+testJob3.getId()+System.lineSeparator() +
+                "Name: Product tester" +System.lineSeparator()+
+                "Employer: Data not available" +System.lineSeparator()+
+                "Location: Desert" + System.lineSeparator()+
+                "Position Type: Data not available" + System.lineSeparator()+
+                "Core Competency: Persistence"+System.lineSeparator(), testJob3.toString().substring(1, (testJob3.toString().length() - 1)));
     }
 }

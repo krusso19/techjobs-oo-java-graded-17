@@ -31,6 +31,58 @@ public class Job {
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
+    @Override
+    public String toString(){
+        String jobString; //Need to make this a loop so that I can specify each name and value
+        //What is the name? It's not a key... what is it? a class?
+        //Then say if empty, say Data not available
+        //Can I iterate over fields?
+        //Why do I not need a return?
+        //TODO - TestTaskFive last test is failing because the values are "" not null. must test that there is a character.
+//        jobString = "Name: "+name+"\n"+
+//                "Employer: "+employer.getValue()+"\n"+
+//                "Location: "+location.getValue()+"\n"+
+//                "Position Type: "+positionType.getValue()+"\n"+
+//                "Core Competency: "+coreCompetency.getValue()+"\n";
+        String jobStringAddition;
+        jobString = System.lineSeparator()+"ID: "+id+System.lineSeparator();
+        if (name.isBlank()){
+            jobStringAddition = "Name: Data not available"+System.lineSeparator();
+        } else {
+            jobStringAddition = "Name: "+name+System.lineSeparator();
+        }
+        jobString = jobString.concat(jobStringAddition);
+
+        if (employer.getValue() == null ||employer.getValue().isBlank()){
+            jobStringAddition = "Employer: Data not available"+System.lineSeparator();
+        } else {
+            jobStringAddition = "Employer: "+employer.getValue()+System.lineSeparator();
+        }
+        jobString = jobString.concat(jobStringAddition);
+
+        if (location.getValue() == null || location.getValue().isBlank()){
+            jobStringAddition = "Location: Data not available"+System.lineSeparator();
+        } else {
+            jobStringAddition = "Location: "+location.getValue()+System.lineSeparator();
+        }
+        jobString += jobStringAddition;
+
+        if (positionType.getValue() == null || positionType.getValue().isBlank()){
+            jobStringAddition = "Position Type: Data not available"+System.lineSeparator();
+        } else {
+            jobStringAddition = "Position Type: "+positionType.getValue()+System.lineSeparator();
+        }
+        jobString += jobStringAddition;
+
+        if (coreCompetency.getValue() == null || coreCompetency.getValue().isBlank()){
+            jobStringAddition = "Core Competency: Data not available"+System.lineSeparator();
+        } else {
+            jobStringAddition = "Core Competency: "+coreCompetency.getValue()+System.lineSeparator();
+        }
+        jobString += jobStringAddition;
+
+        return jobString;
+    }
 
     @Override
     public boolean equals(Object o) {
