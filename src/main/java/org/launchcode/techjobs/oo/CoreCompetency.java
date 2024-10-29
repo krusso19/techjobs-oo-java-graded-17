@@ -9,7 +9,7 @@ public class CoreCompetency {
     private String value;
 
     public CoreCompetency() {
-        this.id = nextId;
+        this.id = nextId; //why do I not need the this?
         nextId++;
     }
 
@@ -35,7 +35,7 @@ public class CoreCompetency {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id); //why not getId()
     }
 
     // TODO: Use the "Generate" tool to add a getter and setter for the 'value' field but
